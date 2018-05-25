@@ -34,11 +34,16 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    Review.find(params[:id]).destroy
+    redirect_to reviews_path
+  end
  
   private
  
     def reviews_params
-      params.require(:review).permit(:name, entry)
+      params.require(:review).permit(:name, :entry)
     end
 
 end
